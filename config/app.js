@@ -29,7 +29,6 @@ export const initServer = ()=>{
         routes(app)
         app.listen(process.env.PORT)
         console.log(`Server running in port ${process.env.PORT}`)
-        console.log("Limae running");
         
     }catch(e){
         console.error('Server init failed', e)
