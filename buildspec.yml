@@ -1,0 +1,21 @@
+version: 0.1
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 22 # O la versión de Node.js que estés usando (ej. 20, 22)
+    commands:
+      - echo "Instalando dependencias de npm..."
+      - npm install
+  build:
+    commands:
+      - echo "Construyendo la aplicación Node.js..."
+      # Aquí puedes añadir comandos para transpilación si usas TypeScript, o para ejecutar pruebas unitarias.
+      # Por ahora, simplemente nos aseguramos de que todo esté listo para el despliegue.
+  post_build:
+    commands:
+      - echo "Construcción completa. Empaquetando para Elastic Beanstalk..."
+artifacts:
+  files:
+    - '**/*' # Esto incluye todos los archivos de tu proyecto en el artefacto final
+  base-directory: . # Indica que los archivos se empaquetan desde el directorio raíz
