@@ -3,13 +3,14 @@ import morgan from "morgan"
 import helmet from "helmet"
 import cors from "cors"
 import { limiter } from '../middlewares/rate.limit.js'
+import userRoutes from '../src/usuario/usuario.routes.js'
 
 const configs = (app)=>{
     app.use(express.json())
         app.use(express.urlencoded({extended: false}))
         app.use(cors(
             {
-                origin: ['http://localhost:5173','https://main.d20sfomf586tvk.amplifyapp.com/'],
+                origin: ['http://localhost:5173','https://main.d20sfomf586tvk.amplifyapp.com'],
                 credentials: true,
             }
         ))
@@ -19,7 +20,7 @@ const configs = (app)=>{
 }
 
 const routes = (app)=>{
-
+    app.use('/api/v1/usuarios', userRoutes)
 }
 
 export const initServer = ()=>{
