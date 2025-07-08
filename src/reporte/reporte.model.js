@@ -23,7 +23,7 @@ const esquemaReporte = Schema(
             ],
             required: [true, 'El tipo de reporte es obligatorio'],
         },
-        //es el que esta usuario
+        //es el que esta logeado
         usuarioQueHizoElReporte: {
             type: Schema.Types.ObjectId,
             ref: 'Usuario',
