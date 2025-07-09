@@ -12,13 +12,12 @@ const userSchema = new Schema(
             type: String,
             unique: true
         },
-        address: {
-            type: {
-                zone: { type: String },  // Ejemplo: "Zona 2"
-                municipality: { type: String }, // Ejemplo: "San Lucas"
-                department: { type: String },  // Ejemplo: "Sacatepéquez"
-            },
-        },//depa muni zona
+        academicCode: {
+            type: String,
+            uppercase: true,
+            unique: true,
+            default: ''
+        },
         mobilePhone: {
             type: String
         },
@@ -38,9 +37,16 @@ const userSchema = new Schema(
         rol: {
             type: String,
             uppercase: true,
-            enum: ['ADMIN', 'ALUMNO'],
-            default: 'ALUMNO'
-        }
+            enum: ['ADMIN', 'STUDENT'],
+            default: 'STUDENT'
+        },
+        reports: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Report',
+                default: []
+            }
+        ],
     },
     {
         versionKey: false,
