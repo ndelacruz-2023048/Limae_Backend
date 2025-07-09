@@ -1,6 +1,6 @@
 'use strict'
 import jwt from 'jsonwebtoken'
-import User from '../src/User/user.model.js'
+import User from '../src/usuario/usuario.model.js'
 
 export const validateTokenJWT = async(req, res, next)=> {
     try {
