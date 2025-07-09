@@ -21,9 +21,18 @@ const noticiaSchema = new Schema(
       type: String,
       default: ''
     },
-    cita: {
+    autor: {
       type: String,
-      maxLength: [500, 'La cita no puede ser mayor de 500 caracteres'],
+      maxLength: [100, 'El autor no puede ser mayor de 100 caracteres'],
+      default: ''
+    },
+    fecha: {
+      type: Date,
+      default: ''
+    },
+    url: {
+      type: String,
+      maxLength: [500, 'La URL no puede ser mayor de 500 caracteres'],
       default: ''
     },
     etiquetas: [
