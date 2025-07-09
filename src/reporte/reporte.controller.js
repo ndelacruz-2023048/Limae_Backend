@@ -4,7 +4,7 @@ import ContadorReporte from '../contador/contador.model.js'
 export const agregarReporte = async (req, res) => {
   const datos = req.body
   //const usuarioQueHizoElReporte = req.user.uid
-  const usuarioQueHizoElReporte = '686cc18accdbc6f2c06b93f1' ///Cambiar por el uid
+  const usuarioQueHizoElReporte = '686eac3233b7f1df9fe16c73' ///Cambiar por el uid
   
   try {
     let contador = await ContadorReporte.findOne({ nombre: 'contadorReportes' })
@@ -74,8 +74,8 @@ export const todosLosReportes = async (req, res) => {
       .skip(skip)
       .limit(limit)
       .sort({ createdAt: -1 })
-      //.populate('usuarioQueHizoElReporte')
-      //.populate('usuarioQueRealizaraElSeguimiento')
+      .populate('usuarioQueHizoElReporte')
+      .populate('usuarioQueRealizaraElSeguimiento')
 
     if (reportes.length === 0) {
       return res.status(404).send({

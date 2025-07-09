@@ -27,13 +27,15 @@ const esquemaReporte = Schema(
         usuarioQueHizoElReporte: {
             type: Schema.Types.ObjectId,
             ref: 'Usuario',
-            required: [true, 'El usuario que hizo el reporte es obligatorio'],
+            //required: [true, 'El usuario que hizo el reporte es obligatorio'],
+            default: '686eac3233b7f1df9fe16c73'
         },
         //Se debería encontrar al usuario de Rafael y se manda su id
         usuarioQueRealizaraElSeguimiento: {
             type: Schema.Types.ObjectId,
             ref: 'Usuario',
-            required: [true, 'El usuario para el seguimiento es obligatorio'],
+            //required: [true, 'El usuario para el seguimiento es obligatorio'],
+            default: '686eac3233b7f1df9fe16c73'
         }
     },
     {
