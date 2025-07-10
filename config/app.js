@@ -6,6 +6,7 @@ import { limiter } from '../middlewares/rate.limit.js'
 import userRoutes from '../src/usuario/usuario.routes.js'
 import reportRoutes from '../src/reporte/reporte.routes.js'
 import authRoutes from '../src/Auth/auth.routes.js'
+import cookieParser from "cookie-parser"
 
 const configs = (app)=>{
     app.use(express.json())
