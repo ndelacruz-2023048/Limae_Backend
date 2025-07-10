@@ -5,6 +5,7 @@ import cors from "cors"
 import { limiter } from '../middlewares/rate.limit.js'
 import userRoutes from '../src/usuario/usuario.routes.js'
 import reportRoutes from '../src/reporte/reporte.routes.js'
+import authRoutes from '../src/Auth/auth.routes.js'
 
 const configs = (app)=>{
     app.use(express.json())
@@ -21,6 +22,7 @@ const configs = (app)=>{
 }
 
 const routes = (app)=>{
+    app.use('/SeminarioProyecto/v1/Auth', authRoutes)
     app.use('/api/v1/usuarios', userRoutes)
     app.use('/api/v1/reportes', reportRoutes)
 }
