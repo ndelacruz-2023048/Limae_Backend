@@ -15,7 +15,6 @@ const userSchema = new Schema(
         academicCode: {
             type: String,
             uppercase: true,
-            unique: true,
             default: ''
         },
         mobilePhone: {
@@ -47,6 +46,10 @@ const userSchema = new Schema(
                 default: []
             }
         ],
+        racha: {
+            type: String,
+            default: 'null'
+        }
     },
     {
         versionKey: false,
