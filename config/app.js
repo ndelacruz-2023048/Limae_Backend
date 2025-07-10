@@ -17,6 +17,7 @@ const configs = (app)=>{
             }
         ))
         app.use(helmet())
+        app.use(cookieParser())
         app.use(morgan('dev'))
         app.use(limiter)
 }
