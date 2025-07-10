@@ -60,37 +60,58 @@ export const eliminarNoticia = async (req, res) => {
   }
 }
 
+
 export const todasLasNoticias = async (req, res) => {
   try {
-    const { limit = 10, skip = 0, etiqueta } = req.query
+    const { limit = 10, skip = 0, etiqueta } = req.query;
 
-    const filtro = etiqueta ? { etiquetas: { $in: [etiqueta] } } : {}
+    const filtro = etiqueta ? { etiquetas: { $in: [etiqueta] } } : {};
 
-    const noticias = await Noticia.find(filtro)
+    let noticias = await Noticia.find(filtro)
       .skip(Number(skip))
       .limit(Number(limit))
-      .sort({ createdAt: -1 })
+      .sort({ createdAt: -1 });
 
+    // Si no hay noticias, se crea una por defecto y se guarda
     if (noticias.length === 0) {
-      return res.status(404).send({
-        success: false,
-        message: 'No se encontraron noticias'
-      })
-    }
+  const noticiaPorDefecto = new Noticia({
+    titulo: "La violencia y su impacto en la sociedad",
+    entrada: "La violencia es un problema que afecta a muchas comunidades alrededor del mundo.",
+    descripcion: "Un análisis profundo sobre las causas y consecuencias de la violencia en nuestra sociedad.",
+    cuerpo: [
+      "La violencia es un fenómeno complejo que afecta la salud física y emocional de las personas.",
+      "Se manifiesta en diversas formas, incluyendo la violencia doméstica, la violencia callejera y la violencia institucional.",
+      "Es fundamental promover la educación, el diálogo y políticas públicas efectivas para reducir su impacto.",
+      "La sociedad debe trabajar unida para crear entornos seguros y saludables para todos."
+    ].join('\n'),
+    fotografia: "https://res.cloudinary.com/dtmwybty7/image/upload/v1752125807/f0eed078-ed59-4e5c-830d-fc21cca5b922_fvxijs.jpg",
+    autor: "Equipo de Redacción",
+    fecha: new Date(),
+    etiquetas: ["Violencia", "Sociedad", "Prevención"]
+  });
+
+  await noticiaPorDefecto.save();
+
+  noticias = [noticiaPorDefecto];
+}
+
+
 
     return res.send({
       success: true,
       noticias
-    })
+    });
+
   } catch (error) {
-    console.error('Error al obtener noticias:', error)
+    console.error('Error al obtener noticias:', error);
     return res.status(500).send({
       success: false,
       message: 'Error general al obtener las noticias',
       error
-    })
+    });
   }
-}
+};
+
 
 export const noticiaPorId = async (req, res) => {
   try {
