@@ -1,9 +1,9 @@
 import rateLimit from "express-rate-limit"
 
 export const limiter = rateLimit({
-    windowMs: 10 * 60 * 1000,
-    max: 500,
+    windowMs: 15 * 60 * 1000,
+    max: 20,
     message:{
-        message: "Your blocked, wait 10 minutes"
+        message: "Your blocked, wait 15 minutes"
     }
 })
