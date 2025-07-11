@@ -86,11 +86,8 @@ export const login = async(req, res) => {
 export const logout = [validateTokenJWT, (req, res ) => {
     return res
         .clearCookie('token')
-        .status(200)
-        .send(
-            {
-                success: true,
-                message: `Logout successfully, see you soon ${req.user.username}`,
-            }
-        )
+        .json({
+            success: true,
+            message: `Logged out successfully, goodbye ${req.user.name}`,
+        })
 }]

@@ -4,7 +4,7 @@ import User from '../src/usuario/usuario.model.js'
 
 export const validateTokenJWT = async(req, res, next)=> {
     try {
-        const token = req.cookies.access_token
+        const token = req.cookies.token
         if(!token) return res.status(401).send(
             {
                 success: false,
