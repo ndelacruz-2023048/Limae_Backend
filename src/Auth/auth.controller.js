@@ -27,7 +27,7 @@ export const register = async(req, res) => {
 }
 
 export const login = async(req, res) => {
-    const { login, password } = req.body
+    const { login, password, rememberMe } = req.body
     try {
         const user = await User.findOne(
             {
@@ -38,6 +38,8 @@ export const login = async(req, res) => {
             }
         )
 
+        console.log('Funciono el rememberMe:', rememberMe); 
+
         if(user && await checkPassword(user.password, password)) {
             const loggedUser = {
                 uid: user._id,
@@ -46,12 +48,17 @@ export const login = async(req, res) => {
                 photo: user.profilePicture
             }
             const token = await generateJwt(loggedUser)
+
+            const oneHour = 1000 * 60 * 60
+            const oneWeek = oneHour * 24 * 7
+            const tokenExpiration = rememberMe ? oneWeek : oneHour
+
             return res
                 .cookie('token', token, {
                     httpOnly: false,     // 👈 Evita ataques XSS
                     secure: process.env.NODE_ENV === 'production', // 👈 Solo HTTPS en prod
                     sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // 👈 Ajuste según entorno
-                    maxAge: 1000 * 60 * 60, // 1 hora
+                    maxAge: tokenExpiration,
                     domain: process.env.NODE_ENV === 'production' 
                         ? 'amplifyapp.com' // ⚠️ O el dominio compartido entre front y back
                         : undefined
