@@ -1,0 +1,44 @@
+[
+    {
+    "numeroReporte": "REP-2025-001",
+  "descripcion": "Incidente de acoso verbal reportado en el aula 3B durante la clase de matemáticas.",
+  "tipoDeReporte": "AcosoVerbal",
+  "usuarioQueHizoElReporte": "507f1f77bcf86cd799439011",
+  "usuarioQueRealizaraElSeguimiento": "507f191e810c19729de860ea"
+    },
+  {
+    "numeroReporte": "REP-2025-002",
+    "descripcion": "Caso de violencia escolar estructural detectado en el patio durante el recreo.",
+    "tipoDeReporte": "ViolenciaEscolarEstructural",
+    "usuarioQueHizoElReporte": "507f1f77bcf86cd799439012",
+    "usuarioQueRealizaraElSeguimiento": "507f191e810c19729de860eb"
+  },
+  {
+    "numeroReporte": "REP-2025-003",
+    "descripcion": "Reporte de violencia por género en el pasillo principal, involucrando comentarios discriminatorios.",
+    "tipoDeReporte": "ViolenciaPorGenero",
+    "usuarioQueHizoElReporte": "507f1f77bcf86cd799439013",
+    "usuarioQueRealizaraElSeguimiento": "507f191e810c19729de860ec"
+  },
+  {
+    "numeroReporte": "REP-2025-004",
+    "descripcion": "Incidente de violencia estudiantil contra un docente durante la clase de historia.",
+    "tipoDeReporte": "ViolenciaEstudiantilContraDocentes",
+    "usuarioQueHizoElReporte": "507f1f77bcf86cd799439014",
+    "usuarioQueRealizaraElSeguimiento": "507f191e810c19729de860ed"
+  },
+  {
+    "numeroReporte": "REP-2025-005",
+    "descripcion": "Reporte de acoso verbal entre estudiantes en la biblioteca escolar.",
+    "tipoDeReporte": "AcosoVerbal",
+    "usuarioQueHizoElReporte": "507f1f77bcf86cd799439015",
+    "usuarioQueRealizaraElSeguimiento": "507f191e810c19729de860ee"
+  },
+  {
+    "numeroReporte": "REP-2025-006",
+    "descripcion": "Caso de violencia sexual reportado en los baños del segundo piso.",
+    "tipoDeReporte": "ViolenciaSexual",
+    "usuarioQueHizoElReporte": "507f1f77bcf86cd799439016",
+    "usuarioQueRealizaraElSeguimiento": "507f191e810c19729de860ef"
+  }
+]

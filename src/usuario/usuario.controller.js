@@ -5,7 +5,7 @@ export const getUsuarios = async (req, res) => {
         const usuarios = await Usuario.find();
         res.status(200).json({
             message: 'Usuarios obtenidos correctamente',
-            usuarios
+            estudiantes: usuarios
         })
     } catch (error) {
         res.status(500).json({

@@ -3,6 +3,6 @@ import { getUsuarios } from "./usuario.controller.js";
 
 const user = Router()
 
-user.get('/', getUsuarios)
+user.get('/users', getUsuarios)
 
 export default user

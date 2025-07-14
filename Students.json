@@ -1,0 +1,80 @@
+[
+  {
+    "name": "Ana",
+    "surname": "García",
+    "username": "ana.garcia",
+    "academicCode": "STU2025001",
+    "mobilePhone": "+1234567890",
+    "country": "México",
+    "email": "ana.garcia@example.com",
+    "password": "hashedPassword123",
+    "profilePicture": "https://example.com/profiles/ana.jpg",
+    "rol": "STUDENT",
+    "reports": ["507f1f77bcf86cd799439011"]
+  },
+  {
+    "name": "Carlos",
+    "surname": "López",
+    "username": "carlos.lopez",
+    "academicCode": "STU2025002",
+    "mobilePhone": "+1234567891",
+    "country": "España",
+    "email": "carlos.lopez@example.com",
+    "password": "hashedPassword456",
+    "profilePicture": "https://example.com/profiles/carlos.jpg",
+    "rol": "STUDENT",
+    "reports": ["507f1f77bcf86cd799439012"]
+  },
+  {
+    "name": "María",
+    "surname": "Rodríguez",
+    "username": "maria.rodriguez",
+    "academicCode": "STU2025003",
+    "mobilePhone": "+1234567892",
+    "country": "Colombia",
+    "email": "maria.rodriguez@example.com",
+    "password": "hashedPassword789",
+    "profilePicture": "",
+    "rol": "STUDENT",
+    "reports": ["507f1f77bcf86cd799439013"]
+  },
+  {
+    "name": "Juan",
+    "surname": "Martínez",
+    "username": "juan.martinez",
+    "academicCode": "STU2025004",
+    "mobilePhone": "+1234567893",
+    "country": "Argentina",
+    "email": "juan.martinez@example.com",
+    "password": "hashedPassword012",
+    "profilePicture": "https://example.com/profiles/juan.jpg",
+    "rol": "STUDENT",
+    "reports": ["507f1f77bcf86cd799439014"]
+  },
+  {
+    "name": "Sofía",
+    "surname": "Hernández",
+    "username": "sofia.hernandez",
+    "academicCode": "STU2025005",
+    "mobilePhone": "+1234567894",
+    "country": "Chile",
+    "email": "sofia.hernandez@example.com",
+    "password": "hashedPassword345",
+    "profilePicture": "",
+    "rol": "STUDENT",
+    "reports": ["507f1f77bcf86cd799439015"]
+  },
+  {
+    "name": "Luis",
+    "surname": "Gómez",
+    "username": "luis.gomez",
+    "academicCode": "STU2025006",
+    "mobilePhone": "+1234567895",
+    "country": "Perú",
+    "email": "luis.gomez@example.com",
+    "password": "hashedPassword678",
+    "profilePicture": "https://example.com/profiles/luis.jpg",
+    "rol": "STUDENT",
+    "reports": ["507f1f77bcf86cd799439016"]
+  }
+]
