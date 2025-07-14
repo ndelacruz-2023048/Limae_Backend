@@ -98,3 +98,55 @@ export const todosLosReportes = async (req, res) => {
     })
   }
 }
+
+//Obtener reporte por usuario
+export const reportesPorUsuario = async (req,res)=>{
+  const { userId } = req.params
+
+  try {
+    const reportes = await Reporte.find({usuarioQueHizoElReporte: userId})
+      .sort({createdAt: -1})
+      .populate('usuarioQueRealizaraElSeguimiento')
+    
+      if(reportes.length === 0){
+        return res.status(404).send({
+          success: false,
+          message: 'No se encontraron reportes de este usuario'
+        })
+      }
+  } catch (error) {
+    console.error('Error general', error)
+    return res.status(500).send({
+      success: false,
+      message: 'Error al obtener los reportes de usuario',
+      error
+    })
+  }
+}
+
+//buscar reporte por id
+export const getReportePorId = async (req, res)=>{
+  try {
+    let {id} = req.params
+    const reporte = await Reporte.findById(id)
+
+    if(!reporte)
+      return res.status(404).send({
+        success: false,
+        message: 'No se encontro el reporte'
+      })
+
+    return res.send({
+      success: true,
+      message: 'Reporte encontrado: ',
+      reporte
+    })
+  } catch (error) {
+    console.error('Error general', error)
+    return res.status(500).send({
+      success: false,
+      message: 'Error general',
+      error
+    })
+  }
+}
