@@ -7,6 +7,13 @@ import userRoutes from '../src/usuario/usuario.routes.js'
 import reportRoutes from '../src/reporte/reporte.routes.js'
 import authRoutes from '../src/Auth/auth.routes.js'
 import cookieParser from "cookie-parser"
+import chatRoutes from '../src/Message/message.routes.js'
+import { userSocket } from "../src/Socket/userState.js"
+
+import http from "http"
+import {Server as SocketServer} from 'socket.io'
+import { setIO } from "../src/Socket/io.js"
+import user from "../src/usuario/usuario.routes.js"
 
 const configs = (app)=>{
     app.use(express.json())
@@ -25,16 +32,36 @@ const configs = (app)=>{
 
 const routes = (app)=>{
     app.use('/SeminarioProyecto/v1/Auth', authRoutes)
+    app.use('/SeminarioProyecto/v1/Chat', chatRoutes)
     app.use('/api/v1/usuarios', userRoutes)
     app.use('/api/v1/reportes', reportRoutes)
 }
 
+const socketConf = (socket, io) => {
+    userSocket(socket, io);
+}
+
 export const initServer = ()=>{
     const app = express()
+    const server = http.createServer(app)
+    const io = new SocketServer(server, {
+        cors: {
+            origin: ['http://localhost:5173','https://main.d20sfomf586tvk.amplifyapp.com'],
+            credentials: true
+        }
+    })
+    io.on('connection', (socket) => {
+        setIO(io)
+        console.log(`Socket connected: ${socket.id}`);
+        socketConf(socket, io);
+        socket.on('disconnect', () => {
+            console.log(`Client disconnected: ${socket.id}`);
+        });
+    });
     try{
         configs(app)
         routes(app)
-        app.listen(process.env.PORT)
+        server.listen(process.env.PORT)
         console.log(`Server running in port ${process.env.PORT}`)
         
     }catch(e){
