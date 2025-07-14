@@ -144,11 +144,8 @@ export const actualizarNoticia = async (req, res) => {
     const { id } = req.params
     const datos = req.body
 
-    if (datos.etiquetas && !Array.isArray(datos.etiquetas)) {
-      return res.status(400).send({
-        success: false,
-        message: 'El campo "etiquetas" debe ser un arreglo'
-      })
+    if (datos.etiquetas && typeof datos.etiquetas === 'string') {
+      datos.etiquetas = datos.etiquetas.split(',').map(et => et.trim()).filter(Boolean);
     }
 
     const noticiaActualizada = await Noticia.findByIdAndUpdate(id, datos, {
