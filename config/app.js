@@ -14,6 +14,7 @@ import http from "http"
 import {Server as SocketServer} from 'socket.io'
 import { setIO } from "../src/Socket/io.js"
 import user from "../src/usuario/usuario.routes.js"
+import { neMessage } from "../src/Socket/MessageSocket.js"
 
 const configs = (app)=>{
     app.use(express.json())
@@ -38,7 +39,8 @@ const routes = (app)=>{
 }
 
 const socketConf = (socket, io) => {
-    userSocket(socket, io);
+    userSocket(socket, io)
+    neMessage(socket, io)
 }
 
 export const initServer = ()=>{

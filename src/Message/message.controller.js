@@ -47,7 +47,7 @@ export const sendMessage = async (req, res) => {
             const socket = getIO().sockets.sockets.get(receiverSocketId);
             if (socket) {
                 socket.emit("newMessage", message);
-                console.log('Message sent to receiver');
+                console.log('Message sent to receiver', message);
                 
             }
         }
