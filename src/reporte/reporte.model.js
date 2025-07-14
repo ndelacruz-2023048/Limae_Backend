@@ -34,6 +34,10 @@ const esquemaReporte = Schema(
             type: Schema.Types.ObjectId,
             ref: 'Usuario',
             required: [true, 'El usuario para el seguimiento es obligatorio'],
+        },
+        image:{
+            type: String,
+            required: false
         }
     },
     {
