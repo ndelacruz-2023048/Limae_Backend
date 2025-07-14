@@ -1,5 +1,5 @@
 import { body, validationResult } from 'express-validator'
-import { validateErros } from './validate.errors.js';
+import { validateErrors } from './validate.errors.js'
 import { existEmail, existUserName, validatePhoneNumberForDB, comonPasswords } from '../utils/db.validators.js'
 
 export const validateDataUser = [
@@ -60,5 +60,5 @@ export const validateDataUser = [
         .isURL().withMessage('Profile picture must be a valid URL'),
     body('reports')
         .optional(),
-    validateErros
+    validateErrors,
 ]

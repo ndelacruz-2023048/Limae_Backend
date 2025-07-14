@@ -7,6 +7,7 @@ import userRoutes from '../src/usuario/usuario.routes.js'
 import reportRoutes from '../src/reporte/reporte.routes.js'
 import noticiaRoutes from '../src/noticias/noticia.router.js'
 import authRoutes from '../src/Auth/auth.routes.js'
+import cookieParser from "cookie-parser"
 
 const configs = (app)=>{
     app.use(express.json())
@@ -18,6 +19,7 @@ const configs = (app)=>{
             }
         ))
         app.use(helmet())
+        app.use(cookieParser())
         app.use(morgan('dev'))
         app.use(limiter)
 }
