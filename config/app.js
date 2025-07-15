@@ -8,6 +8,7 @@ import reportRoutes from '../src/reporte/reporte.routes.js'
 import noticiaRoutes from '../src/noticias/noticia.router.js'
 import authRoutes from '../src/Auth/auth.routes.js'
 import cookieParser from "cookie-parser"
+import formularioRoutes from '../src/formularios/formulario.routes.js'
 
 const configs = (app)=>{
     app.use(express.json())
@@ -29,6 +30,7 @@ const routes = (app)=>{
     app.use('/api/v1/usuarios', userRoutes)
     app.use('/api/v1/reportes', reportRoutes)
     app.use("/api/v1/noticias", noticiaRoutes)
+    app.use('/api/v1/formularios', formularioRoutes)
 }
 
 export const initServer = ()=>{
