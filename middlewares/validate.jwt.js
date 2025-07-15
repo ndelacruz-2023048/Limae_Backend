@@ -20,7 +20,6 @@ export const validateTokenJWT = async(req, res, next)=> {
             }
         )
         req.user = user
-        console.log('user: ', user.uid);
         
         next() 
     } catch (e) {
