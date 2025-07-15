@@ -26,7 +26,7 @@ const configs = (app)=>{
                 origin: ['http://localhost:5173','https://limae.org'],
                 credentials: true,
             }
-            
+
         ))
         app.use(helmet())
         app.use(cookieParser())
@@ -57,7 +57,7 @@ export const initServer = ()=>{
     const server = http.createServer(app)
     const io = new SocketServer(server, {
         cors: {
-            origin: ['http://localhost:5173','https://main.d20sfomf586tvk.amplifyapp.com'],
+            origin: ['http://localhost:5173','https://limae.org'],
             credentials: true
         }
     })
