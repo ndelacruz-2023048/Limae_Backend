@@ -1,5 +1,6 @@
-import jwt from 'jsonwebtoken';
-import { generateJwt } from './jwt.js'; // Ruta según tu estructura
+import jwt from 'jsonwebtoken'
+import { generateJwt } from "../utils/jwt.js";
+
 
 export const refreshJwt = async (req, res) => {
     const incomingRefreshToken = req.cookies.refreshToken;
@@ -12,13 +13,15 @@ export const refreshJwt = async (req, res) => {
         const decoded = jwt.verify(incomingRefreshToken, process.env.JWT_REFRESH_SECRET);
 
         console.log('Decoded refresh token:', decoded);
-        
 
-        // Generar nuevo access token
+        // ✅ Usar todos los datos del refresh token
         const newAccessToken = generateJwt({
-        uid: decoded.uid,
-        username: decoded.username,
-        role: decoded.role
+            uid: decoded.uid,
+            username: decoded.username,
+            name: decoded.name,           // ✅ Ahora debería venir del refresh token
+            surname: decoded.surname,     // ✅ Ahora debería venir del refresh token
+            role: decoded.role,           // ✅ Ahora debería venir del refresh token
+            photo: decoded.photo,         // ✅ Ahora debería venir del refresh token
         });
 
         console.log('New access token generated:', newAccessToken);

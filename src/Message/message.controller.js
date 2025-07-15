@@ -52,6 +52,15 @@ export const sendMessage = async (req, res) => {
             }
         }
 
+        const senderSocketId = getReceiverSocketId(sender);
+        if (senderSocketId) {
+            const socket = getIO().sockets.sockets.get(senderSocketId);
+            if (socket) {
+                socket.emit("messageConfirmed", message);
+                console.log('Message confirmed to sender', message);
+            }
+        }
+
         res.status(200).send(
             {
                 success: true,
