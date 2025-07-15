@@ -36,8 +36,7 @@ const esquemaReporte = Schema(
             required: [true, 'El usuario para el seguimiento es obligatorio'],
         },
         image:{
-            type: String,
-            required: false
+            type: String
         }
     },
     {
