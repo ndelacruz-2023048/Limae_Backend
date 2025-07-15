@@ -26,6 +26,7 @@ const configs = (app)=>{
                 origin: ['http://localhost:5173','https://limae.org'],
                 credentials: true,
             }
+            
         ))
         app.use(helmet())
         app.use(cookieParser())
