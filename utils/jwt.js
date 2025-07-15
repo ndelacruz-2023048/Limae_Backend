@@ -1,7 +1,7 @@
 'use strict'
 import jwt from 'jsonwebtoken'
 
-export const generateJwt = async(payload)=>{
+export const generateJwt = (payload)=>{
     try{
         return jwt.sign(
             payload,

@@ -2,6 +2,7 @@ import User from '../usuario/usuario.model.js'
 import { checkPassword, encrypt } from '../../utils/encrypt.js' 
 import { generateJwt } from '../../utils/jwt.js'
 import { validateTokenJWT } from '../../middlewares/validate.jwt.js'
+import jwt from 'jsonwebtoken';
 
 export const register = async(req, res) => {
     const data = req.body
@@ -48,20 +49,38 @@ export const login = async(req, res) => {
                 photo: user.profilePicture
             }
             const token = await generateJwt(loggedUser)
+            const refreshToken = jwt.sign(
+                { 
+                    uid: user._id,
+                    username: user.username,
+                    name: user.name,
+                    surname: user.surname,
+                    role: user.rol,
+                    photo: user.profilePicture
+                }, // Puedes incluir más datos si lo necesitas
+                process.env.JWT_REFRESH_SECRET, // Debe estar en tu .env
+                { expiresIn: rememberMe ? '7d' : '1d' } // Si "rememberMe", dura más
+            )
 
             const oneHour = 1000 * 60 * 60
             const oneWeek = oneHour * 24 * 7
-            const tokenExpiration = rememberMe ? oneWeek : oneHour
+            const cookieExpiration = rememberMe ? oneWeek : oneHour
 
             return res
                 .cookie('token', token, {
                     httpOnly: false,     // 👈 Evita ataques XSS
                     secure: process.env.NODE_ENV === 'production', // 👈 Solo HTTPS en prod
                     sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // 👈 Ajuste según entorno
-                    maxAge: tokenExpiration,
+                    maxAge: cookieExpiration,
                     domain: process.env.NODE_ENV === 'production' 
                         ? 'limae.org' // ⚠️ O el dominio compartido entre front y back
                         : undefined
+                })
+                .cookie('refreshToken', refreshToken, {
+                    httpOnly: false,
+                    secure: process.env.NODE_ENV === 'production',
+                    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+                    maxAge: oneWeek // 1 semana para el refresh token
                 })
                 .status(200)
                 .send(
@@ -86,6 +105,7 @@ export const login = async(req, res) => {
 export const logout = [validateTokenJWT, (req, res ) => {
     return res
         .clearCookie('token')
+        .clearCookie('refreshToken')
         .json({
             success: true,
             message: `Logged out successfully, goodbye ${req.user.name}`,
