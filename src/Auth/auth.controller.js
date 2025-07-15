@@ -60,7 +60,7 @@ export const login = async(req, res) => {
                     sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // 👈 Ajuste según entorno
                     maxAge: tokenExpiration,
                     domain: process.env.NODE_ENV === 'production' 
-                        ? 'amplifyapp.com' // ⚠️ O el dominio compartido entre front y back
+                        ? 'limae.org' // ⚠️ O el dominio compartido entre front y back
                         : undefined
                 })
                 .status(200)
