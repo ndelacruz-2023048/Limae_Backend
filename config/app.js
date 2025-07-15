@@ -15,7 +15,7 @@ const configs = (app)=>{
         app.use(express.urlencoded({extended: false}))
         app.use(cors(
             {
-                origin: ['http://localhost:5173','https://main.d20sfomf586tvk.amplifyapp.com'],
+                origin: ['http://localhost:5173','https://limae.org'],
                 credentials: true,
             }
         ))
