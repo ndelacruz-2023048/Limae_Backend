@@ -3,8 +3,8 @@ import ContadorReporte from '../contador/contador.model.js'
 
 export const agregarReporte = async (req, res) => {
   const datos = req.body
-  //const usuarioQueHizoElReporte = req.user.uid
-  const usuarioQueHizoElReporte = '686cc18accdbc6f2c06b93f1' ///Cambiar por el uid
+  const usuarioQueHizoElReporte = req.user.uid
+  //const usuarioQueHizoElReporte = '686cc18accdbc6f2c06b93f1' ///Cambiar por el uid
   
   try {
     let contador = await ContadorReporte.findOne({ nombre: 'contadorReportes' })

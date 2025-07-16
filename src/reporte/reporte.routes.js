@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { agregarReporte, eliminarReporte, getReportePorId, reportesPorUsuario, todosLosReportes} from "./reporte.controller.js";
-//import { validateTokenJWT } from "../../middlewares/validate.jwt.js";
+import { validateTokenJWT } from "../../middlewares/validate.jwt.js";
 
 const apiReport = Router()
 
-apiReport.post('/agregar', agregarReporte)
+apiReport.post('/agregar', validateTokenJWT, agregarReporte)
 apiReport.delete('/eliminar/:id', eliminarReporte)
 apiReport.get('/todosLosReportes', todosLosReportes)
 apiReport.get('/reporte-por-usuario', reportesPorUsuario)
