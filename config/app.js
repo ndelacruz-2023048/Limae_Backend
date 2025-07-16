@@ -17,6 +17,7 @@ import { setIO } from "../src/Socket/io.js"
 import user from "../src/usuario/usuario.routes.js"
 import { neMessage } from "../src/Socket/MessageSocket.js"
 import formularioRoutes from '../src/formularios/formulario.routes.js'
+import respuestaRoutes from "../src/formularios/respuestaFormulario.routes.js"
 
 const configs = (app)=>{
     app.use(express.json())
@@ -43,7 +44,8 @@ const routes = (app)=>{
     app.get('/', (req, res) => {
         res.status(200).send('La API de LimaeBackend está funcionando correctamente!');
     });
-    app.use('/api/v1/formularios', formularioRoutes)
+    app.use('/SeminarioProyecto/v1', formularioRoutes)
+    app.use('/SeminarioProyecto/v1', respuestaRoutes)
 }
 
 const socketConf = (socket, io) => {

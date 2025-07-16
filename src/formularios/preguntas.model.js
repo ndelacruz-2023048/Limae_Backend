@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose'
 
-const pregunta = Schema(
+const preguntaSchema = Schema(
   {
     pregunta: {
       type: String,
@@ -9,14 +9,10 @@ const pregunta = Schema(
     },
     respuesta: {
       type: String,
-      required: [true, 'La respuesta es obligatoria'],
+      required: false, // ❌ Ya no se responde aquí
       maxLength: [1000, 'La respuesta no puede superar los 1000 caracteres'],
     }
-  },
-  {
-    versionKey: false,
-    timestamps: true
   }
 )
 
-export default model('Pregunta', pregunta)
+export default model('Pregunta', preguntaSchema)

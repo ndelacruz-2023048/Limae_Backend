@@ -1,11 +1,11 @@
 import { Schema, model } from 'mongoose'
 
-const formulario = Schema(
+const cuestionarioSchema = Schema(
   {
-    nombreUsuario: {
+    titulo: {
       type: String,
-      required: [true, 'El nombre del usuario es obligatorio'],
-      maxLength: [100, 'El nombre no puede superar los 100 caracteres'],
+      required: [true, 'El título del cuestionario es obligatorio'],
+      maxLength: [150, 'El título no puede superar los 150 caracteres'],
     },
     preguntas: [
       {
@@ -13,12 +13,12 @@ const formulario = Schema(
         ref: 'Pregunta',
         required: true
       }
-    ]
-  },
-  {
-    versionKey: false,
-    timestamps: true
+    ],
+    creadoPor: {
+      type: String,
+      default: 'ADMIN'
+    }
   }
 )
 
-export default model('Formulario', formulario)
+export default model('Cuestionario', cuestionarioSchema)

@@ -1,16 +1,15 @@
 import { Router } from 'express'
 import {
-  crearFormulario,
-  listarFormularios,
-  editarFormulario,
-  eliminarFormulario
+  crearCuestionario,
+  listarCuestionarios
 } from '../formularios/formulario.controller.js'
 
-const forms = Router()
+const formularioRoutes = Router()
 
-forms.post('/quiz', crearFormulario)
-forms.get('/quiz/list', listarFormularios)
-forms.put('/quiz/:id', editarFormulario)
-forms.delete('/quiz/:id', eliminarFormulario)
+// Crear un nuevo cuestionario con preguntas
+formularioRoutes.post('/quiz', crearCuestionario)
 
-export default forms
+// Listar todos los cuestionarios disponibles
+formularioRoutes.get('/quiz/list', listarCuestionarios)
+
+export default formularioRoutes
