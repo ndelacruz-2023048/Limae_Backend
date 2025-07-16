@@ -26,13 +26,13 @@ const esquemaReporte = Schema(
         //es el que esta logeado
         usuarioQueHizoElReporte: {
             type: Schema.Types.ObjectId,
-            ref: 'Usuario',
+            ref: 'User',
             required: [true, 'El usuario que hizo el reporte es obligatorio'],
         },
         //Se debería encontrar al usuario de Rafael y se manda su id
         usuarioQueRealizaraElSeguimiento: {
             type: Schema.Types.ObjectId,
-            ref: 'Usuario',
+            ref: 'User',
             required: [true, 'El usuario para el seguimiento es obligatorio'],
         },
         image:{

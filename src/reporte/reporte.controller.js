@@ -74,8 +74,8 @@ export const todosLosReportes = async (req, res) => {
       .skip(skip)
       .limit(limit)
       .sort({ createdAt: -1 })
-      //.populate('usuarioQueHizoElReporte')
-      //.populate('usuarioQueRealizaraElSeguimiento')
+      .populate('usuarioQueHizoElReporte')
+      .populate('usuarioQueRealizaraElSeguimiento')
 
     if (reportes.length === 0) {
       return res.status(404).send({
@@ -83,6 +83,8 @@ export const todosLosReportes = async (req, res) => {
         message: 'No se encontraron reportes'
       })
     }
+    console.log(reportes);
+    
 
     return res.send({
       success: true,
