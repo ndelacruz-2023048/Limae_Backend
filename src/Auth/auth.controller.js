@@ -42,10 +42,12 @@ export const login = async(req, res) => {
         console.log('Funciono el rememberMe:', rememberMe); 
 
         if(user && await checkPassword(user.password, password)) {
+            console.log(user);
+            
             const loggedUser = {
                 uid: user._id,
                 username: user.username,
-                role: user.role,
+                role: user.rol,
                 photo: user.profilePicture
             }
             const token = await generateJwt(loggedUser)
